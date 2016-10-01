@@ -89,7 +89,7 @@ def main():
       time.sleep(INTERVAL)
     
     db = new_db
-    pickle.dump(db, open('db', w))
+    pickle.dump(db, open('db', 'w'))
     
     # send the daily tweet
     if time.time() - last_daily > 60*60*24:
