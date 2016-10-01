@@ -18,7 +18,6 @@ MAX_FOLLOW = 5000
 def init_api():
   creds = yaml.load(open(CONFIG).read())
   creds['sleep_on_rate_limit'] = True
-  print(str(creds))
   return twitter.Api(**creds)
 
 
