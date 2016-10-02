@@ -18,7 +18,6 @@ MAX_FOLLOW = 5000
 def init_api():
   creds = yaml.load(open(CONFIG).read())
   creds['sleep_on_rate_limit'] = True
-  print(str(creds))
   return twitter.Api(**creds)
 
 
@@ -90,7 +89,7 @@ def main():
       time.sleep(INTERVAL)
     
     db = new_db
-    pickle.dump(db, open('db', w))
+    pickle.dump(db, open('db', 'w'))
     
     # send the daily tweet
     if time.time() - last_daily > 60*60*24:
