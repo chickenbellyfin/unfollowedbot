@@ -51,9 +51,9 @@ def update_user(user, db, api):
       log('\tblocked @'+user.screen_name)
     elif user.id in db:
       unfollowers = [f for f in db[user.id] if f not in followers]
-      
+      unfollower_count = len(unfollowers)
       # if there are any unfollowers, send a DM
-      if len(unfollowers) > 0:
+      if unfollower_count > 0:
         users = api.UsersLookup(unfollowers)
         message = str(len(unfollowers)) + ' unfollower(s): ' +  ' '.join(['@'+f.screen_name for f in users])
         api.PostDirectMessage(message, user_id=user.id)
